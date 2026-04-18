@@ -2,7 +2,7 @@ import { Controller, Get, Post } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { NotificationCreateCommand } from './impl/notification-create-command';
 
-@Controller('')
+@Controller('notification')
 export default class NotificationController {
   constructor(private readonly commandBus: CommandBus) {}
 

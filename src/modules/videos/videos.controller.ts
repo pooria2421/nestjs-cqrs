@@ -1,7 +1,7 @@
 import { Controller, Post, Get, Body, Param } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
-import { CreateVideoCommand } from './commands/impl/create-video.command';
 import { GetVideoQuery } from './queries/impl/get-video.query';
+import { VideoCreateCommand } from './commands/impl/video-create.command';
 
 @Controller('videos')
 export class VideosController {
@@ -13,7 +13,7 @@ export class VideosController {
   @Post()
   create(@Body() body: any) {
     return this.commandBus.execute(
-      new CreateVideoCommand(body.filePath, body.userId),
+      new VideoCreateCommand(body.filePath, body.userId),
     );
   }
 
