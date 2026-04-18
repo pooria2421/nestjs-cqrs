@@ -11,9 +11,11 @@ import VideoProcessHandler from './commands/handlers/video-process.handler';
 import VideoProcessThumbnailHandler from './commands/handlers/video-process.thumbnail.handler';
 import { VideoProcessFinalStepEventHandler } from './commands/handlers/video-process-final-step.handler';
 import { DatabaseModule } from 'src/shared/databases/mogoose-config';
+import { NotificationsModule } from '../notifications/notifications.module';
+import NotificationService from '../notifications/notifications.service';
 
 @Module({
-  imports: [CqrsModule, DatabaseModule],
+  imports: [CqrsModule, DatabaseModule, NotificationsModule],
   controllers: [VideosController],
   providers: [
     CreateVideoHandler,
@@ -23,6 +25,7 @@ import { DatabaseModule } from 'src/shared/databases/mogoose-config';
     VideoProcessEventHandler,
     VideoProcessHandler,
     VideoSaga,
+    NotificationService,
     VideoProcessThumbnailHandler,
     VideoProcessFinalStepEventHandler,
   ],

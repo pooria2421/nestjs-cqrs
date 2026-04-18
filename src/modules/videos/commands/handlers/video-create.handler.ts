@@ -14,8 +14,10 @@ export class CreateVideoHandler implements ICommandHandler<VideoCreateCommand> {
   ) {}
 
   async execute(command: VideoCreateCommand) {
-    const video = await this.videoRepository.create(command);
-
+    const video = await (
+      await this.videoRepository.create(command.videoInput)
+    ).save();
+    console.log(command, video);
     this.eventBus.publish(new VideoCreatedEvent(video.id));
 
     return video;
