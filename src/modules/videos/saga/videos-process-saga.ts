@@ -6,6 +6,8 @@ import { VideoCreatedEvent } from '../events/impl/video-created.event';
 import { VideoProcessCommand } from '../commands/impl/video-process.command';
 import { VideoProcessEvent } from '../events/impl/video-process.event';
 import { CreateVideoProcessThumnailCommand } from '../commands/impl/video-process.thumbnail.command';
+import VideoDeleteCommand from '../commands/impl/video-delete.command';
+import VideoProcessFailEvent from '../events/impl/video-process-fail.event';
 
 @Injectable()
 export class VideoSaga {
@@ -27,11 +29,11 @@ export class VideoSaga {
     );
   };
 
-  // @Saga()
-  // rollbackFlow = (events$: Observable<any>): Observable<ICommand> => {
-  //   return events$.pipe(
-  //     ofType(VideoProcessFailedEvent),
-  //     map((event) => new DeleteUploadedVideoCommand(event.videoId)),
-  //   );
-  // };
+  @Saga()
+  rollbackFlow = (events$: Observable<any>): Observable<ICommand> => {
+    return events$.pipe(
+      ofType(VideoProcessFailEvent),
+      map((event) => new VideoDeleteCommand(event.videoId)),
+    );
+  };
 }

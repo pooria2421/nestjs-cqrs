@@ -1,6 +1,7 @@
 import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs';
 import { CreateVideoProcessThumnailCommand } from '../impl/video-process.thumbnail.command';
 import NotificationService from 'src/modules/notifications/notifications.service';
+import VideoProcessFailEvent from '../../events/impl/video-process-fail.event';
 
 @CommandHandler(CreateVideoProcessThumnailCommand)
 export default class VideoProcessThumbnailHandler
@@ -17,6 +18,7 @@ export default class VideoProcessThumbnailHandler
       this.notificationService.sendNotif('');
     } catch (e) {
       // call rollBack event saga
+      this.eventBus.publish(new VideoProcessFailEvent(command.videoId));
     }
   }
 }
