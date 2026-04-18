@@ -1,6 +1,6 @@
 export class VideoCreateCommand {
   constructor(
-    public readonly filePath: string,
-    public readonly userId: number,
+    public readonly title: string,
+    public readonly description: string,
   ) {}
 }

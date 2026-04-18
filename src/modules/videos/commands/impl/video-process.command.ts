@@ -1,5 +1,3 @@
-export class VideoProcessCommand{
-    constructor(
-        public readonly videoId : number
-    ){}
+export class VideoProcessCommand {
+  constructor(public readonly videoId: string) {}
 }

@@ -5,5 +5,7 @@ import { VideoCreatedEvent } from '../impl/video-created.event';
 export class VideoCreatedEventHandler
   implements IEventHandler<VideoCreatedEvent>
 {
-  handle(event: VideoCreatedEvent) {}
+  handle(event: VideoCreatedEvent) {
+    console.log('Video with id:', event.videoId, 'created successfuly');
+  }
 }

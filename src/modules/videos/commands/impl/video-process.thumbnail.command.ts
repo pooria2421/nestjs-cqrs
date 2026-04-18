@@ -1,5 +1,3 @@
-export class CreateVideoProcessThumnailCommand{
-    constructor(
-        public readonly videoId : number
-    ){}
+export class CreateVideoProcessThumnailCommand {
+  constructor(public readonly videoId: string) {}
 }

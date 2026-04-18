@@ -10,14 +10,21 @@ import { VideoSaga } from './saga/videos-process-saga';
 import VideoProcessHandler from './commands/handlers/video-process.handler';
 import VideoProcessThumbnailHandler from './commands/handlers/video-process.thumbnail.handler';
 import { VideoProcessFinalStepEventHandler } from './commands/handlers/video-process-final-step.handler';
+import { DatabaseModule } from 'src/shared/databases/mogoose-config';
 
 @Module({
-  imports: [CqrsModule],
+  imports: [CqrsModule, DatabaseModule],
   controllers: [VideosController],
-  providers: [CreateVideoHandler,
-     GetVideoHandler,
-      VideoCreatedEventHandler ,
-       VideoProcessThumbnailEventHandler ,
-        VideoProcessEventHandler , VideoProcessHandler, VideoSaga ,VideoProcessThumbnailHandler , VideoProcessFinalStepEventHandler ],
+  providers: [
+    CreateVideoHandler,
+    GetVideoHandler,
+    VideoCreatedEventHandler,
+    VideoProcessThumbnailEventHandler,
+    VideoProcessEventHandler,
+    VideoProcessHandler,
+    VideoSaga,
+    VideoProcessThumbnailHandler,
+    VideoProcessFinalStepEventHandler,
+  ],
 })
 export class VideosModule {}

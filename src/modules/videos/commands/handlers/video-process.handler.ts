@@ -11,11 +11,7 @@ export default class VideoProcessHandler
   async execute(command: VideoProcessCommand): Promise<any> {
     console.log('processing video ...');
 
-    const videoId = 21;
-
     // if video processing success
-    this.eventBus.publish(new VideoProcessEvent(videoId));
-
-    return videoId;
+    this.eventBus.publish(new VideoProcessEvent(command.videoId));
   }
 }
