@@ -13,7 +13,6 @@ export class CreateVideoHandler implements ICommandHandler<VideoCreateCommand> {
       userId: command.userId,
     };
 
-    console.log('dc')
 
     this.eventBus.publish(new VideoCreatedEvent(video.id, video.filePath) as any);
 

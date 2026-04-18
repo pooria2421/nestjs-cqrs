@@ -5,13 +5,13 @@ import { VideoProcessEvent } from "../../events/impl/video-process.event";
 
 
 @CommandHandler(VideoProcessCommand)
-export default class CreateVideoProcessHandler implements ICommandHandler<CreateVideoProcessHandler>{
+export default class VideoProcessHandler implements ICommandHandler<VideoProcessCommand>{
 constructor(
 
     private readonly eventBus : EventBus
 
 ){}
-async execute(command: CreateVideoProcessHandler): Promise<any> {
+async execute(command: VideoProcessCommand): Promise<any> {
     console.log('processing video ...')
    
     const videoId = 21
@@ -19,7 +19,7 @@ async execute(command: CreateVideoProcessHandler): Promise<any> {
     // if video processing success
     this.eventBus.publish(new VideoProcessEvent(videoId))
     
-
+     return videoId
 }
 
 }

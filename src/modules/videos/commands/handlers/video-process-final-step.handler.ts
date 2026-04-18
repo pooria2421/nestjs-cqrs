@@ -1,7 +1,8 @@
 import { EventsHandler, IEventHandler } from '@nestjs/cqrs';
 
 @EventsHandler()
-export class VideoCreatedEventHandler implements IEventHandler<any> {
+export class VideoProcessFinalStepEventHandler implements IEventHandler<any> {
   handle(event: any) {
+    console.log('success');
   }
 }
