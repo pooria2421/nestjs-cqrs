@@ -11,8 +11,12 @@ export default class VideoProcessThumbnailHandler
     private readonly notificationService: NotificationService,
   ) {}
   async execute(command: CreateVideoProcessThumnailCommand): Promise<any> {
-    console.log('generating thumbnail...');
-    console.log('success!');
-    this.notificationService.sendNotif('');
+    try {
+      console.log('generating thumbnail...');
+      console.log('success!');
+      this.notificationService.sendNotif('');
+    } catch (e) {
+      // call rollBack event saga
+    }
   }
 }

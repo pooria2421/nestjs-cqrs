@@ -26,4 +26,12 @@ export class VideoSaga {
       map((event) => new CreateVideoProcessThumnailCommand(event.videoId)),
     );
   };
+
+  // @Saga()
+  // rollbackFlow = (events$: Observable<any>): Observable<ICommand> => {
+  //   return events$.pipe(
+  //     ofType(VideoProcessFailedEvent),
+  //     map((event) => new DeleteUploadedVideoCommand(event.videoId)),
+  //   );
+  // };
 }

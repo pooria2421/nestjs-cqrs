@@ -14,7 +14,7 @@ export class VideosController {
   }
 
   @Get(':id')
-  get(@Param('id') id: number) {
+  get(@Param('id') id: string) {
     return this.queryBus.execute(new GetVideoQuery(id));
   }
 }
