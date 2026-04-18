@@ -1,5 +1,3 @@
 export class VideoProcessEvent {
-  constructor(
-    public readonly videoId: number,
-  ) {}
+  constructor(public readonly videoId: number) {}
 }

@@ -7,18 +7,14 @@ import { VideoProcessCommand } from '../commands/impl/video-process.command';
 import { VideoProcessEvent } from '../events/impl/video-process.event';
 import { CreateVideoProcessThumnailCommand } from '../commands/impl/video-process.thumbnail.command';
 
-
 @Injectable()
 export class VideoSaga {
-
   // 🎬 1. Upload → Processing
   @Saga()
   uploadFlow = (events$: Observable<any>): Observable<ICommand> => {
     return events$.pipe(
       ofType(VideoCreatedEvent),
-      map(event =>
-        new VideoProcessCommand(event.videoId),
-      ),
+      map((event) => new VideoProcessCommand(event.videoId)),
     );
   };
 
@@ -27,14 +23,7 @@ export class VideoSaga {
   processFlow = (events$: Observable<any>): Observable<ICommand> => {
     return events$.pipe(
       ofType(VideoProcessEvent),
-
-      map(event =>
-        new CreateVideoProcessThumnailCommand(event.videoId),
-      ),
+      map((event) => new CreateVideoProcessThumnailCommand(event.videoId)),
     );
   };
-
-
-
-
 }

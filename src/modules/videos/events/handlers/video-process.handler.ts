@@ -1,7 +1,9 @@
 import { EventBus, EventsHandler, IEventHandler } from '@nestjs/cqrs';
+import { VideoProcessEvent } from '../impl/video-process.event';
 
-@EventsHandler()
-export class VideoProcessEventHandler implements IEventHandler<any> {
-  handle(event: any) {
-  }
+@EventsHandler(VideoProcessEvent)
+export class VideoProcessEventHandler
+  implements IEventHandler<VideoProcessEvent>
+{
+  handle(event: VideoProcessEvent) {}
 }

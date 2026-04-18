@@ -5,10 +5,7 @@ import { VideoCreateCommand } from './commands/impl/video-create.command';
 
 @Controller('videos')
 export class VideosController {
-  constructor(
-    private commandBus: CommandBus,
-    private queryBus: QueryBus,
-  ) {}
+  constructor(private commandBus: CommandBus, private queryBus: QueryBus) {}
 
   @Post()
   create(@Body() body: any) {
